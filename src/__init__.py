@@ -1,3 +1,3 @@
-from .pfd_agents import root_agent
+from . import root_agent
 
 __all__  = ["root_agent"]

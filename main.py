@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from src import root_agent
 import base64
 import asyncio
-from pfd_system.src.fuel_cell_prompts import system_prompt
+from src.prompts.fuel_cell_prompts import SYSTEM_PROMPT
 
 load_dotenv()
 
@@ -22,7 +22,7 @@ async def read_pfd(image_path):
                 },
                 {
                     "type": "input_text",
-                    "text": system_prompt,
+                    "text": SYSTEM_PROMPT,
                 },
             ],
         },

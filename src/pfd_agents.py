@@ -1,6 +1,6 @@
 from agents import Agent
-from pfd_system.src.prompts.fuel_cell_prompts import SYSTEM_PROMPT
-from pfd_system.src.prompts.agent_prompts import ROOT_AGENT, INSPECTION_AGENT, PFD_AGENT
+from src.prompts.fuel_cell_prompts import SYSTEM_PROMPT
+from src.prompts.agent_prompts import ROOT_AGENT, INSPECTION_AGENT, PFD_AGENT
 
 inspection_agent = Agent(name="Inspector agent", 
                    model="gpt-4o-mini", 
