@@ -18,15 +18,6 @@ The system may include the following subsystems:
 - LEAK DETECTION SYSTEM
 - FIRE SUPPRESSION SYSTEM
 
-## Constraints and Rulé
-
-1.Compulsory constraint
-- The system must contain:
-  + Fuel
-  + Oxidant (Air)
-  + Coolant
-  
-
 ## Instructions
 
 1. Identify all components (devices, units, equipment) in the diagram.
@@ -40,6 +31,24 @@ The system may include the following subsystems:
 6. If arrows are not clear, infer direction based on standard engineering logic (e.g., fuel flows from storage --> delivery --> stack).
 7. Normalize component names (remove IDs if necessary, but keep them if they help distinguish components).
 8. Do NOT invent components or connections not present in the diagram.
+
+## Component Naming Rules (IMPORTANT)
+
+1. If multiple components have the SAME base name, assign unique indices:
+   - Format: "{device_name} 1", "{device_name} 2", "{device_name} 3", ...
+
+2. Apply numbering ONLY when:
+   - Components share the exact same base name
+   - AND represent distinct physical units
+
+3. Preserve semantic differences:
+   - "Cooling Pump" and "Fuel Pump" are DIFFERENT --> do NOT rename or merge
+   - Only identical names like "Pump" --> "Pump 1", "Pump 2"
+
+4. Maintain consistency:
+   - Once a component is labeled (e.g., "Pump 1"), reuse the same name everywhere
+
+5. If two components are in different locations or connections --> treat as different instances
 
 ## Output Format (STRICT)
 
