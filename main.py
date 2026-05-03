@@ -1,16 +1,14 @@
-from agents import Runner
 from dotenv import load_dotenv
-from src import root_agent
+from agents import Runner
+from src import classifier_agent, pfd_agent, inspection_agent
+from src.helper.response_helper import safe_json
 import base64
 import asyncio
-from src.prompts.fuel_cell_prompts import SYSTEM_PROMPT
+# from src.prompts.fuel_cell_prompts import SYSTEM_PROMPT
 
 load_dotenv()
 
-async def read_pfd(image_path):
-    # image_path = "test/image.png"
-    with open(image_path, "rb") as image_file:
-        base64_image = base64.b64encode(image_file.read()).decode("utf-8")
+async def run_classifier(image):
 
     messages = [
         {
@@ -18,27 +16,113 @@ async def read_pfd(image_path):
             "content": [
                 {
                     "type": "input_image",
-                    "image_url": f"data:image/png;base64,{base64_image}",
-                },
-                {
-                    "type": "input_text",
-                    "text": SYSTEM_PROMPT,
-                },
+                    "image_url": f"data:image/png;base64,{image}",
+                }
             ],
         },
     ]
 
-    result = await Runner.run(starting_agent=root_agent, input=messages)
+    result = await Runner.run(
+        starting_agent=classifier_agent,
+        input=messages
+    )
+    response = result.final_output
+    return safe_json(response)
 
+async def run_pfd_agent(image):
 
-    return result.final_output
+    messages = [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "input_image",
+                    "image_url": f"data:image/png;base64,{image}",
+                }
+            ],
+        },
+    ]
+
+    result = await Runner.run(
+        starting_agent=pfd_agent,
+        input=messages
+    )
+
+    response = result.final_output
+    return safe_json(response)
+
+async def run_inspection(graph):
+
+    messages = [
+        {
+            "role": "user",
+            "content": str(graph)
+        }
+    ]
+
+    result = await Runner.run(
+        starting_agent=inspection_agent,
+        input=messages
+    )
+
+    response = result.final_output
+    return safe_json(response)
+
+async def root_pipeline(image):
+
+    cls = await run_classifier(image)
+    if cls["classification"] == "NON_PFD":
+        return {
+            "classification": "NON_PFD",
+            "final_status": "skipped_non_pfd"
+        }
+
+    best_graph = None
+    best_violations = 999
+    last_result = None
+
+    for i in range(3):
+
+        graph = await run_pfd_agent(image)
+        print(graph)
+        result = await run_inspection(graph)
+        last_result = result
+
+        if len(result["violations"]) < best_violations:
+            best_graph = graph
+            best_violations = len(result["violations"])
+
+        if result["is_valid"]:
+            return {
+                "classification": cls["classification"],
+                "final_status": "valid",
+                "iterations": i + 1,
+                "final_graph": graph,
+                "remaining_violations": []
+            }
+
+    return {
+        "classification": cls["classification"],
+        "final_status": "invalid_but_best_effort",
+        "iterations": 3,
+        "final_graph": best_graph,
+        "remaining_violations": last_result["violations"] if last_result else []
+    }
+
+async def read_pfd(image_path):
+    with open(image_path, "rb") as image_file:
+        base64_image = base64.b64encode(image_file.read()).decode("utf-8")
+    
+    result = await root_pipeline(base64_image)
+
+    return result
 
 
 if __name__ == "__main__":
     async def main():
         tasks = [
-            read_pfd("test/620352_1_En_2_Fig1_HTML.png"),
-            read_pfd("test/image.png")
+            read_pfd("/mnt/d/project/RESEARCH/pfd_system/dataset/620352_1_En_2_Fig1_HTML.png"),
+            # read_pfd("pfd_system/dataset/image.png")
         ]
         results = await asyncio.gather(*tasks)
         print(results)

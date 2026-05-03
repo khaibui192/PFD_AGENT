@@ -1,0 +1,19 @@
+name: PR Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  require-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR author
+        run: |
+          AUTHOR="${{ github.event.pull_request.user.login }}"
+          echo "PR Author: $AUTHOR"
+
+          if [ "$AUTHOR" != "your_github_username" ]; then
+            echo "Review required for non-owner"
+            exit 1
+          fi

@@ -1,0 +1,5 @@
+{
+  "python.analysis.extraPaths": ["./src"],
+  "python.envFile": "${workspaceFolder}/.env",
+//   "python.defaultInterpreterPath": "/home/khai/miniconda3/envs/pfd-agent/bin/python"
+}
