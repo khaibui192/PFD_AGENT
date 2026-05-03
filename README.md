@@ -4,7 +4,10 @@ Command:
 ```
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install .
+# This is for multiple images
 python main.py --images path/img1.png path/img2.png path/img3.png
+# This is for folder of images
+python main.py --folder path/data_folder
 ```
 
 Expected output:
