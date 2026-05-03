@@ -4,7 +4,7 @@ Command:
 ```
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install .
-python3 main.py
+python main.py --images path/img1.png path/img2.png path/img3.png
 ```
 
 Expected output:

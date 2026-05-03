@@ -4,6 +4,8 @@ from src import classifier_agent, pfd_agent, inspection_agent
 from src.helper.response_helper import safe_json
 import base64
 import asyncio
+# from pdf2image import convert_from_path
+import argparse
 # from src.prompts.fuel_cell_prompts import SYSTEM_PROMPT
 
 load_dotenv()
@@ -119,11 +121,14 @@ async def read_pfd(image_path):
 
 
 if __name__ == "__main__":
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--images", nargs="+", required=True, help="List of image paths")
+    args = parser.parse_args()
+    
+    
     async def main():
-        tasks = [
-            read_pfd("/mnt/d/project/RESEARCH/pfd_system/dataset/620352_1_En_2_Fig1_HTML.png"),
-            # read_pfd("pfd_system/dataset/image.png")
-        ]
+        tasks = [read_pfd(path) for path in args.images]
         results = await asyncio.gather(*tasks)
         print(results)
 
