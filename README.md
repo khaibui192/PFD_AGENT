@@ -26,15 +26,9 @@ Expected output:
             {"start_component": "DC/DC Converter", "end_component": "Electricity"},
             {"start_component": "Hydrogen", "end_component": "Injector"},
             {"start_component": "Injector", "end_component": "Fuel Cell Stack"},
-            {
-                "start_component": "Fuel Cell Stack",
-                "end_component": "Gas/water separator",
-            },
+            {"start_component": "Fuel Cell Stack", "end_component": "Gas/water separator"},
             {"start_component": "Gas/water separator", "end_component": "Check Valve"},
-            {
-                "start_component": "Check Valve",
-                "end_component": "Pressure Control Valve",
-            },
+            {"start_component": "Check Valve", "end_component": "Pressure Control Valve"},
             {"start_component": "Pressure Control Valve", "end_component": "Exhaust"},
             {"start_component": "Air", "end_component": "Filter"},
             {"start_component": "Filter", "end_component": "Flow meter"},
