@@ -70,7 +70,7 @@ async def run_inspection(graph):
     response = result.final_output
     return safe_json(response)
 
-async def root_pipeline(image):
+async def root_pipeline(image, image_path):
 
     cls = await run_classifier(image)
     if cls["classification"] == "NON_PFD":
@@ -104,6 +104,7 @@ async def root_pipeline(image):
             }
 
     return {
+        "path": image_path,
         "classification": cls["classification"],
         "final_status": "invalid_but_best_effort",
         "iterations": 3,
@@ -115,7 +116,7 @@ async def read_pfd(image_path):
     with open(image_path, "rb") as image_file:
         base64_image = base64.b64encode(image_file.read()).decode("utf-8")
     
-    result = await root_pipeline(base64_image)
+    result = await root_pipeline(base64_image, image_path)
 
     return result
 
