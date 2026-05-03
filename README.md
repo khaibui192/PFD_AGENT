@@ -2,10 +2,9 @@
 
 Command:
 ```
-uv init
-uv add openai-agents
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-pip install openai-agents
+pip install .
+python3 main.py
 ```
 
 Expected output:
