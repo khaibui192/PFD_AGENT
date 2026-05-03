@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 from agents import Runner
 from src import classifier_agent, pfd_agent, inspection_agent
-from src.helper.response_helper import safe_json
+from src.helper.response_helper import safe_json, collect_images
 import base64
 import asyncio
 # from pdf2image import convert_from_path
@@ -120,17 +120,35 @@ async def read_pfd(image_path):
 
     return result
 
+async def main(args):
+    paths = collect_images(args.images, args.folder)
+
+    print(f"Processing {len(paths)} files...")
+
+    tasks = [(p, read_pfd(p)) for p in paths]
+
+    results = await asyncio.gather(
+        *[t[1] for t in tasks],
+        return_exceptions=True
+    )
+
+    final = {
+        path: (str(res) if isinstance(res, Exception) else res)
+        for (path, _), res in zip(tasks, results)
+    }
+
+    print(final) # This is a temporary solution for IO tasks.
 
 if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
-    parser.add_argument("--images", nargs="+", required=True, help="List of image paths")
-    args = parser.parse_args()
-    
-    
-    async def main():
-        tasks = [read_pfd(path) for path in args.images]
-        results = await asyncio.gather(*tasks)
-        print(results)
 
-    asyncio.run(main())
+    parser.add_argument("--images", nargs="+", help="List of image paths")
+    parser.add_argument("--folder", type=str, help="Folder containing images")
+
+    args = parser.parse_args()
+
+    if not args.images and not args.folder:
+        parser.error("At least one of --images or --folder is required")
+
+    asyncio.run(main(args))
