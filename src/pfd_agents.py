@@ -15,9 +15,9 @@ pfd_agent = Agent(name="pfd_reader_agent",
                    model="gpt-4o-mini", 
                    instructions=PFD_AGENT_PROMPT + SYSTEM_PROMPT)
 
-root_agent = Agent(name="root_agent", 
-                   model="gpt-4o-mini", 
-                   instructions=ROOT_AGENT_PROMPT + SYSTEM_PROMPT,
-                #    handoffs=[classifier_agent, pfd_agent, inspection_agent],
-                #    tools=[root_pipeline]
-                   )
+# root_agent = Agent(name="root_agent", 
+#                    model="gpt-4o-mini", 
+#                    instructions=ROOT_AGENT_PROMPT + SYSTEM_PROMPT,
+#                 #    handoffs=[classifier_agent, pfd_agent, inspection_agent],
+#                 #    tools=[root_pipeline]
+#                    )

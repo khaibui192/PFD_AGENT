@@ -1,3 +1,3 @@
-from .pfd_agents import root_agent, classifier_agent, pfd_agent, inspection_agent
+from .pfd_agents import classifier_agent, pfd_agent, inspection_agent
 
-__all__ = ["root_agent", "classifier_agent", "pfd_agent", "inspection_agent"]
+__all__ = ["classifier_agent", "pfd_agent", "inspection_agent"]
