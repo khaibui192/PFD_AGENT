@@ -86,6 +86,7 @@ async def root_pipeline(image, image_path):
     for i in range(3):
 
         graph = await run_pfd_agent(image)
+        print(f"==== Iteration {i+1} - Generated Graph ====")
         print(graph)
         result = await run_inspection(graph)
         last_result = result
@@ -132,10 +133,10 @@ async def main(args):
         return_exceptions=True
     )
 
-    final = {
-        path: (str(res) if isinstance(res, Exception) else res)
+    final = [
+        (str(res) if isinstance(res, Exception) else res)
         for (path, _), res in zip(tasks, results)
-    }
+    ]
 
     print(final) # This is a temporary solution for IO tasks.
 
