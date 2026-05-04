@@ -10,6 +10,9 @@ python main.py --images path/img1.png path/img2.png path/img3.png
 python main.py --folder path/data_folder
 ```
 
+The prompt rule is referenced from this document (This will be updated gradually):
+- https://www.energy.gov/documents/fcm05r0pdf
+
 Expected output:
 
 ```
@@ -65,7 +68,8 @@ Expected output:
 
 ```
 
-Note: 
+Note:
+
 Paper to read:
 - Graph neural network
 - Graph convolution network
