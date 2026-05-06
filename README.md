@@ -19,6 +19,7 @@ Expected output:
 
 [
     {
+        'path': '/mnt/d/project/RESEARCH/pfd_system/dataset/620352_1_En_2_Fig1_HTML.png',
         "classification": "PFD",
         "final_status": "invalid_but_best_effort",
         "iterations": 3,
