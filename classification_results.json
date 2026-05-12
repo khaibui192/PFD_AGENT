@@ -1,0 +1,121 @@
+{
+  "timestamp": "2026-05-13T01:18:04.961574",
+  "total_images": 16,
+  "pfd_count": 10,
+  "non_pfd_count": 6,
+  "error_count": 0,
+  "classifications": [
+    {
+      "filename": "027fe83a7dbfec1c0c18183290a554d6_p_9.png",
+      "classification": "PFD",
+      "confidence": 0.9,
+      "reason": "The image contains engineering components (fuel cell, compressor, motor controller) and explicit connectivity (flow paths, arrows), visually representing process/system topology for air and fuel systems.",
+      "destination": "dataset/pfd/027fe83a7dbfec1c0c18183290a554d6_p_9.png"
+    },
+    {
+      "filename": "0284cd11bac443989c8cdc50b0bca8ec_p_4.png",
+      "classification": "PFD",
+      "confidence": 0.9,
+      "reason": "The image contains a clear process flow diagram with interconnected engineering components related to gasification, demonstrating explicit connectivity and process topology.",
+      "destination": "dataset/pfd/0284cd11bac443989c8cdc50b0bca8ec_p_4.png"
+    },
+    {
+      "filename": "02ad51958bfa7f9ca561d75fa273f8ac_p_5.png",
+      "classification": "PFD",
+      "confidence": 0.95,
+      "reason": "The image contains engineering components such as compressors and valves, explicit connectivity through pipes and flow lines, and represents process/system topology with material flow and component relationships.",
+      "destination": "dataset/pfd/02ad51958bfa7f9ca561d75fa273f8ac_p_5.png"
+    },
+    {
+      "filename": "02ad51958bfa7f9ca561d75fa273f8ac_p_8.png",
+      "classification": "PFD",
+      "confidence": 0.9,
+      "reason": "The image contains connected engineering components like exchangers, reactors, and columns, with clear flow paths and process relationships visually represented.",
+      "destination": "dataset/pfd/02ad51958bfa7f9ca561d75fa273f8ac_p_8.png"
+    },
+    {
+      "filename": "03a146ba71a260620a3b1f180a3ad2b7_p_3.png",
+      "classification": "PFD",
+      "confidence": 0.95,
+      "reason": "The image contains clear engineering components, explicit connectivity with flow directions, and represents a cohesive process flow topology for a fuel cell reformer system.",
+      "destination": "dataset/pfd/03a146ba71a260620a3b1f180a3ad2b7_p_3.png"
+    },
+    {
+      "filename": "03b9e0c01f1cdd60655145f58d83a967_p_5.png",
+      "classification": "NON_PFD",
+      "confidence": 0.0,
+      "reason": "Image contains primarily text and figures without clear connected engineering flow structure or topology.",
+      "destination": "dataset/non_pfd/03b9e0c01f1cdd60655145f58d83a967_p_5.png"
+    },
+    {
+      "filename": "03bdcd237552c5bffe29477731bc0ab2_p_3.png",
+      "classification": "NON_PFD",
+      "confidence": 0.9,
+      "reason": "The image contains mostly text and diagrams without clear connected flow structure or engineering processes.",
+      "destination": "dataset/non_pfd/03bdcd237552c5bffe29477731bc0ab2_p_3.png"
+    },
+    {
+      "filename": "03d5c94289c7b9ce06fb4fd21a58a6c2_p_4.png",
+      "classification": "PFD",
+      "confidence": 0.95,
+      "reason": "The image contains a complex schematic diagram that includes multiple interconnected engineering components, such as pumps, separators, and heat exchangers, with clear flow direction and process relationships.",
+      "destination": "dataset/pfd/03d5c94289c7b9ce06fb4fd21a58a6c2_p_4.png"
+    },
+    {
+      "filename": "042bcabe21b09fef4847762acdfdee08_p_1.png",
+      "classification": "NON_PFD",
+      "confidence": 0.9,
+      "reason": "The document primarily contains text and lacks a clear connected process flow diagram or engineering topology.",
+      "destination": "dataset/non_pfd/042bcabe21b09fef4847762acdfdee08_p_1.png"
+    },
+    {
+      "filename": "04e3ccce42e775020a860dc0a0e2c73f_p_5.png",
+      "classification": "PFD",
+      "confidence": 0.95,
+      "reason": "The image depicts an engineering process flow diagram with clearly identifiable components (reactors, heat exchangers, pumps) and explicit connectivity showing process flow and relationships between elements.",
+      "destination": "dataset/pfd/04e3ccce42e775020a860dc0a0e2c73f_p_5.png"
+    },
+    {
+      "filename": "06df7769eff64388dbad2455dbe14d94_p_5.png",
+      "classification": "NON_PFD",
+      "confidence": 0.9,
+      "reason": "The image consists mainly of text and does not contain clear connected engineering flow structures or a recognizable process flow diagram.",
+      "destination": "dataset/non_pfd/06df7769eff64388dbad2455dbe14d94_p_5.png"
+    },
+    {
+      "filename": "079b68227381506791ebc88758cb585f_p_2.png",
+      "classification": "NON_PFD",
+      "confidence": 0.9,
+      "reason": "The image contains text and figures describing a micro-CHP system but lacks clear, connected process flow topology characteristic of a PFD.",
+      "destination": "dataset/non_pfd/079b68227381506791ebc88758cb585f_p_2.png"
+    },
+    {
+      "filename": "079b68227381506791ebc88758cb585f_p_3.png",
+      "classification": "NON_PFD",
+      "confidence": 0.0,
+      "reason": "Image contains primarily text with equations and no visual representation of connected engineering components or flow structure.",
+      "destination": "dataset/non_pfd/079b68227381506791ebc88758cb585f_p_3.png"
+    },
+    {
+      "filename": "07b586ff82b9dd35cfcaf84a7fd4b99e_p_4.png",
+      "classification": "PFD",
+      "confidence": 0.95,
+      "reason": "The image clearly displays engineering components and explicit connectivity, illustrating a process flow with linked elements including pumps, exchangers, and storage tanks.",
+      "destination": "dataset/pfd/07b586ff82b9dd35cfcaf84a7fd4b99e_p_4.png"
+    },
+    {
+      "filename": "620352_1_En_2_Fig1_HTML.png",
+      "classification": "PFD",
+      "confidence": 0.95,
+      "reason": "Image contains engineering components with explicit connectivity and process/system topology representing flow structure.",
+      "destination": "dataset/pfd/620352_1_En_2_Fig1_HTML.png"
+    },
+    {
+      "filename": "image.png",
+      "classification": "PFD",
+      "confidence": 0.95,
+      "reason": "The diagram contains engineering components (tanks, pumps, heater, compressor) with explicit connectivity (arrows indicating flow) and a clear process topology showing material movement.",
+      "destination": "dataset/pfd/image.png"
+    }
+  ]
+}

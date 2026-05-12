@@ -17,8 +17,8 @@ async def run_classifier(image):
             "role": "user",
             "content": [
                 {
-                    "type": "image_url",
-                    "image_url": f"data:image/png;base64,{image}",
+                    "type": "input_image",
+                    "input_image": f"data:image/png;base64,{image}",
                 }
             ],
         },

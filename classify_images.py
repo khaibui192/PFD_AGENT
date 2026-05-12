@@ -41,7 +41,7 @@ async def classify_image(image_path):
                 "role": "user",
                 "content": [
                     {
-                        "type": "image_url",
+                        "type": "input_image",
                         "image_url": f"data:image/png;base64,{base64_image}",
                     }
                 ],
@@ -49,7 +49,12 @@ async def classify_image(image_path):
         ]
         
         result = await Runner.run(starting_agent=classifier_agent, input=messages)
-        return result.final_output
+        output = result.final_output
+        if isinstance(output, str):
+            import json
+            output = json.loads(output)
+
+        return output
     
     except Exception as e:
         return {"error": str(e), "classification": "ERROR"}

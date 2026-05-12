@@ -27,7 +27,7 @@ async def classify_image(image_path):
                 "role": "user",
                 "content": [
                     {
-                        "type": "image_url",
+                        "type": "input_image",
                         "image_url": {
                             "url": f"data:{image_type};base64,{base64_image}"
                         }
